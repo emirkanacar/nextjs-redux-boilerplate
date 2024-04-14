@@ -1,4 +1,5 @@
-import type { Metadata } from "next";
+"use client"
+
 import {Raleway} from "next/font/google";
 import "./globals.css";
 import StoreProvider from "@/app/StoreProvider";
@@ -8,10 +9,6 @@ const raleway = Raleway({
   subsets: ['latin'],
   display: 'swap',
 })
-export const metadata: Metadata = {
-  title: "NextJS Boilerplate",
-  description: "NextJS Boilerplate with Redux and Tailwind",
-};
 
 export default function RootLayout({
   children,

@@ -18,7 +18,7 @@ const fakeStorage = () => {
 
 const storage =
     typeof window !== "undefined"
-        ? createWebStorage("app")
+        ? createWebStorage("local")
         : fakeStorage();
 
 export default storage;

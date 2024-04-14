@@ -3,10 +3,11 @@
 import storage from "@/redux/fakeStorage";
 import { persistReducer } from 'redux-persist';
 import {combineReducers} from "redux";
-
-import todoReducer from './slices/todoSlice';
 import {configureStore} from "@reduxjs/toolkit";
 import {useDispatch} from "react-redux";
+
+import todoReducer from './slices/todoSlice';
+import authReducer from './slices/authSlice';
 
 const todoPersistConfig = {
     key: 'todo',
@@ -14,8 +15,15 @@ const todoPersistConfig = {
     whitelist: ['todos'],
 }
 
+const authPersistConfig = {
+    key: 'auth',
+    storage: storage,
+    whitelist: ['user', 'isAuthenticated'],
+}
+
 const rootReducer = combineReducers({
     todo: persistReducer(todoPersistConfig, todoReducer),
+    auth: persistReducer(authPersistConfig, authReducer),
 });
 
 export const store = configureStore({
